@@ -17,8 +17,8 @@
 
 <body>
 <?php
-include ("conecta.php");
-include ("banco-produto.php");
+require_once("conecta.php");
+require_once("banco-produto.php");
 
 $id = $_GET['id'];
 $produto = buscaProduto($conexao, $id);
@@ -32,7 +32,7 @@ $produto = buscaProduto($conexao, $id);
 </section>
 </section>
 
-<form  action="adiciona-produto.php" class="form_contact">
+<form  action="altera-produto.php" class="form_contact">
 <h2>Cadastro</h2>
 <div class="user_info">
 

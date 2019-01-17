@@ -1,7 +1,7 @@
 <?php 
 include("cabecalho.php");
-include("conecta.php");
-include("banco-produto.php");
+require_once("conecta.php");
+require_once("banco-produto.php");
 
 $id = $_GET['id'];
 removeProduto($conexao, $id);

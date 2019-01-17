@@ -1,20 +1,24 @@
 <?php
-include("cabecalho.php");
-include("conecta.php");
-include("banco-produto.php"); ?>
+require_once("cabecalho.php");
+require_once("conecta.php");
+require_once("banco-produto.php");
+require_once("class/produto.php");
+ ?>
 <?php
-$id = $_GET["id"];
-$nome = $_GET["nome"];
-$quantidade = $_GET["quantidade"];
-$valor = $_GET["valor"];
-$modelo = $_GET["modelo"];
 
-if(alteraProduto($conexao, $id, $nome, $quantidade, $valor, $modelo )) { ?>
-<p class="text-success">Produto <?= $nome; ?>, <?= $valor; ?> Alterado!</p>
+$produto = new Produto();
+$produto->id = $_GET["id"];
+$produto->nome = $_GET["nome"];
+$produto->quantidade = $_GET["quantidade"];
+$produto->valor = $_GET["valor"];
+$produto->modelo = $_GET["modelo"];
+
+if(alteraProduto($conexao, $produto )) { ?>
+<p class="text-success">Produto <?= $produto->nome ?>, <?= $produto->valor ?> Alterado!</p>
 <?php } else {
     
 ?>
-<p class="text-danger">O produto <?= $nome; ?> não foi alterado: <?= $msg ?></p>
+<p class="text-success">Produto <?= $produto->nome ?>, <?= $produto->valor ?>NÃO Alterado!</p>
 <?php
 }
 ?>

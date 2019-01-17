@@ -9,6 +9,7 @@ $resultado = mysqli_query($conexao, "select * from produtos");
 while($produto_array = mysqli_fetch_assoc($resultado)) {
     
 $produto = new Produto();
+$produto->id = $produto_array['id'];
 $produto->nome = $produto_array['nome'];
 $produto->quantidade = $produto_array['quantidade'];
 $produto->valor = $produto_array['valor'];
@@ -35,10 +36,11 @@ function removeProduto($conexao, $id) {
 $query = "delete from produtos where id = {$id}";
 return mysqli_query($conexao, $query);
 }
-function alteraProduto($conexao,$id, $nome, $quantidade, $valor, $modelo){
-$query = "update produtos set nome = '{$nome}', quantidade = {$quantidade},
-           valor={$valor}, modelo={$modelo} where id = '{$id}'";
-    return mysqli_query($conexao, $query);
+function alteraProduto($conexao,$produto){
+
+$query = "update produtos set nome='{$produto->nome}', quantidade = {$produto->quantidade},
+ valor={$produto->valor}, modelo={$produto->modelo} where id='{$produto->id}'";
+return mysqli_query($conexao, $query);
 
 }
 

@@ -1,6 +1,6 @@
  <?php
-include("conecta.php");
-include("banco-produto.php");
+require_once("conecta.php");
+require_once("banco-produto.php");
 require_once("class/produto.php");
 
 ?>
@@ -18,6 +18,7 @@ require_once("class/produto.php");
 </tr>
 <tr>
 <?php
+
     $produtos = listaProdutos($conexao);
     foreach($produtos as $produto) :
 ?>
@@ -27,10 +28,10 @@ require_once("class/produto.php");
     <td class="text-center"><?= $produto->modelo ?></td>
     <td class="text-center">
 
-    <form action="remove-produto.php" method="GET">
-    <a title="Remover" href="remove-produto.php?id=<?=$produto->id?>" class="glyphicon glyphicon-remove"></a>
+ 
+    <a  title="Remover" href="remove-produto.php?id=<?=$produto->id?>" class="glyphicon glyphicon-remove"></a>
     <a title="Alterar" href="produto-altera-formulario.php?id=<?=$produto->id?>" class="glyphicon glyphicon-plus"></a>
-    <span title="Visualizar" data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-search"></span>
+    <a title="Visualizar" data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-search"></a>
     
     
   <!-- Modal -->
